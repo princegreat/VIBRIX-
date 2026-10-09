@@ -1,0 +1,28 @@
+VIBRIX
+
+Global Communication Platform
+
+VIBRIX is a global communication platform designed to help people connect through chat, video-call rooms, private conversations, and room discovery.
+
+Stage One Objectives
+
+- User registration and secure login
+- User profiles
+- Private messaging
+- Room creation and discovery
+- Video communication
+- Secure wallet architecture
+- Administrative and staff controls
+- Security, testing, and production readiness
+
+Development Principles
+
+- Secure authentication and authorization
+- Protect user privacy and financial records
+- Keep financial transactions auditable
+- Test features before production release
+- Build in stages without silently removing approved requirements
+
+Project: VIBRIX
+Release: Stage One
+Status: Initial repository setup

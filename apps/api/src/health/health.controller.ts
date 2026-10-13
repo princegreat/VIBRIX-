@@ -1,9 +1,16 @@
 import { Controller, Get } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('health')
 export class HealthController {
+  constructor(private readonly config: ConfigService) {}
+
   @Get()
   check() {
-    return { status: 'ok', service: 'vibrix-api' };
+    return {
+      status: 'ok',
+      service: this.config.get<string>('app.name'),
+      env: this.config.get<string>('app.env'),
+    };
   }
 }

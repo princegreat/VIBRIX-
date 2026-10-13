@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import configuration from './config/configuration';
 import { AuthModule } from './auth/auth.module';
 import { HealthController } from './health/health.controller';
 import { EchoController } from './echo/echo.controller';
+import { IdempotencyInterceptor } from './idempotency/idempotency.interceptor';
 
 @Module({
   imports: [
@@ -14,6 +15,9 @@ import { EchoController } from './echo/echo.controller';
     AuthModule,
   ],
   controllers: [HealthController, EchoController],
-  providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
+  providers: [
+    { provide: APP_GUARD, useClass: ThrottlerGuard },
+    { provide: APP_INTERCEPTOR, useClass: IdempotencyInterceptor },
+  ],
 })
 export class AppModule {}
